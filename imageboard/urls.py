@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     # URL-привязки, то есть привязки URL к методу вида (контроллера)
-    path('',             views.index,  name='index'),
-    path('d/',           views.board,  name='board'),
-    path('d/res/1.html', views.thread, name='thread'),
+    path('',                                          views.index,  name='index'),
+    path('<str:board_name>/',                         views.board,  name='board'),
+    path('<str:board_name>/res/<int:thread_id>.html', views.thread, name='thread'),
 ]
