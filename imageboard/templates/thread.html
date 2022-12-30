@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{board.address}} - {{board.title}}</title>
+</head>
+<body>
+    <p>Оппост:</p>
+    <p>{{op_post.id}} - {{op_post.subject}} - {{op_post.body}}</p>
+
+    <p>Ответы:</p>
+    {% for post in posts %}
+        <p>{{post.id}} - {{post.subject}} - {{post.body}}</p>
+    {% endfor %}
+
+<form action="{% url 'add_post' board.address %}" method="POST">
+    <input type="hidden" name="parent" value="{{op_post.id}}">
+
+    {# Это для защиты от атак определённого вида, django без этого не запустит #}
+    {# Для этого добавляет скрытое поле #}
+    {% csrf_token %}
+
+    <input    name="subject" type="text" placeholder="Тема" size="35"><br>
+    <textarea name="text" required placeholder="Текст" cols="60" rows="6"></textarea><br>
+    <button   type="submit">Запостить</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{board.title}}</title>
+</head>
+<body>
+<p>{{board.description}}</p>
+<p>Треды:</p>
+{% for op_post in op_posts %}
+    <p><a href="/{{board.address}}/res/{{op_post.id}}.html">>>{{op_post.id}}</a></p>
+{% endfor %}
+</body>
+</html>

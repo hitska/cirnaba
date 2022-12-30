@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+<p>Доски в наличии:</p>
+{% for board in boards %}
+    <p><a href="/{{board.address}}/">/{{board.address}}/ - {{board.title}}</a></p>
+{% endfor %}
+</body>
+</html>
